@@ -1,9 +1,65 @@
+## A. Executive Summary
+
+An audit of 96,478 delivered orders reveals that Veridi Logistics has a systemic 
+delivery accuracy problem driven by inaccurate estimates, not just late shipments. 
+Super Late orders (>5 days late) score 1.79 out of 5 versus 4.29 for On Time orders — 
+a 2.50-point drop proving that broken delivery promises, not just delays, are driving 
+negative reviews. Geographic analysis shows northeastern states, particularly Alagoas (AL) 
+and Maranhão (MA), are disproportionately affected with the worst on-time rates and lowest 
+satisfaction scores. The root cause is systemic over-promising — the estimation algorithm 
+tells customers packages will arrive 11.28 days earlier than they actually do.
+
+## B. Project Links
+- **Notebook:** https://colab.research.google.com/drive/14pk3x6geLSnUVJBJU4rYK4imggcsFb8G?usp=sharing
+- **Dashboard:** https://app.powerbi.com/view?r=eyJrIjoiOWE1OTMzOTYtZjU2NS00MTAzLWFhYWItMjJmMzc0OGU3MjhjIiwidCI6Ijk0MWJiZjVmLWYyYzAtNDg3NS1hMjRjLTY5MDc4NjVkMjUxYSIsImMiOjh9
+- **Presentation:** https://docs.google.com/presentation/d/e/2PACX-1vRfR263H-t4gDkV67bKlGK9tPbihNZ6j1w_Jr2iT5p-okdzD6IMvYefwNbL0jV-wg/pub?start=false&loop=false&delayms=3000
+
+## C. Technical Explanation
+
+**Data Cleaning:**
+- Deduplicated reviews before joining (some orders had multiple reviews 
+  — kept the most recent one per order)
+- Excluded non-delivered orders (canceled, unavailable) from delay analysis
+- Converted all date columns to datetime format before calculating differences
+- Filled untranslated Portuguese product categories with original name as fallback
+
+**Candidate's Choice — The Promise Score:**
+The Promise Score measures how reliably the system sets delivery 
+expectations per state (0-100, higher = more reliable). Rather than 
+just identifying which states receive late deliveries, this metric 
+quantifies how badly the estimation algorithm is miscalibrated per 
+region. AL scored the worst at 77.1, with 22.92% of orders 
+over-promised. This gives operations a concrete, actionable number — 
+simply adding a region-specific buffer to delivery estimates would 
+reduce bad reviews without changing actual logistics performance.
+- **Dashboard:** https://app.powerbi.com/view?r=eyJrIjoiOWE1OTMzOTYtZjU2NS00MTAzLWFhYWItMjJmMzc0OGU3MjhjIiwidCI6Ijk0MWJiZjVmLWYyYzAtNDg3NS1hMjRjLTY5MDc4NjVkMjUxYSIsImMiOjh9
+- **Presentation:** https://docs.google.com/presentation/d/e/2PACX-1vRfR263H-t4gDkV67bKlGK9tPbihNZ6j1w_Jr2iT5p-okdzD6IMvYefwNbL0jV-wg/pub?start=false&loop=false&delayms=3000
+
+## C. Technical Explanation
+
+**Data Cleaning:**
+- Deduplicated reviews before joining (some orders had multiple reviews 
+  — kept the most recent one per order)
+- Excluded non-delivered orders (canceled, unavailable) from delay analysis
+- Converted all date columns to datetime format before calculating differences
+- Filled untranslated Portuguese product categories with original name as fallback
+
+**Candidate's Choice — The Promise Score:**
+The Promise Score measures how reliably the system sets delivery 
+expectations per state (0-100, higher = more reliable). Rather than 
+just identifying which states receive late deliveries, this metric 
+quantifies how badly the estimation algorithm is miscalibrated per 
+region. AL scored the worst at 77.1, with 22.92% of orders 
+over-promised. This gives operations a concrete, actionable number — 
+simply adding a region-specific buffer to delivery estimates would 
+reduce bad reviews without changing actual logistics performance.
+
 # Project Brief: The "Last Mile" Logistics Auditor
 
 **Client:** Veridi Logistics (Global E-Commerce Aggregator)  
 **Deliverable:** Public Dashboard, Code Notebook & Insight Presentation
 
----
+--
 
 ## 1. Business Context
 **Veridi Logistics** manages shipping for thousands of online sellers. Recently, the CEO has noticed a spike in negative customer reviews. She has a "gut feeling" that the problem isn't just that packages are late, but that the estimated delivery dates provided to customers are wildly inaccurate (i.e., we are over-promising and under-delivering).
@@ -128,20 +184,20 @@ Please edit this `README.md` file in your forked repository to include the follo
 > **We do not accept "permission error" excuses. Test your links in Incognito Mode.**
 
 ### 1. Repository & Code Checks
-- [ ] **My GitHub Repo is Public.** (Open the link in a Private/Incognito window to verify).
-- [ ] **I have uploaded the `.ipynb` notebook file.**
-- [ ] **I have ALSO uploaded an HTML or PDF export** of the notebook.
-- [ ] **I have NOT uploaded the massive raw dataset.** (Use `.gitignore` or just don't commit the CSV).
-- [ ] **My code uses Relative Paths.** 
+- [x] **My GitHub Repo is Public.** (Open the link in a Private/Incognito window to verify).
+- [x] **I have uploaded the `.ipynb` notebook file.**
+- [x] **I have ALSO uploaded an HTML or PDF export** of the notebook.
+- [x] **I have NOT uploaded the massive raw dataset.** (Use `.gitignore` or just don't commit the CSV).
+- [x] **My code uses Relative Paths.** 
 
 ### 2. Deliverable Checks
-- [ ] **My Dashboard link is publicly accessible.** (No login required).
-- [ ] **My Presentation link is publicly accessible.** (Permissions set to "Anyone with the link can view").
-- [ ] **I have updated this `README.md` file** with my Executive Summary and technical notes.
+- [x] **My Dashboard link is publicly accessible.** (No login required).
+- [x] **My Presentation link is publicly accessible.** (Permissions set to "Anyone with the link can view").
+- [x] **I have updated this `README.md` file** with my Executive Summary and technical notes.
 
 ### 3. Completeness
-- [ ] I have completed **User Stories 1-4**.
-- [ ] I have completed the **"Candidate's Choice"** challenge and explained it in the README.
+- [x] I have completed **User Stories 1-4**.
+- [x] I have completed the **"Candidate's Choice"** challenge and explained it in the README.
 
 **✅ Only when you have checked every box above, proceed to the submission form.**
 
